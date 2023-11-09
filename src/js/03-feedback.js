@@ -10,14 +10,15 @@ const { email, message } = form.elements;
 reloadPage();
 
 function onInputData(e) {
-    dataForm = { email: email.value, message: message.value };
+    dataForm.email = email.value;
+    dataForm.message = message.value;
     localStorage.setItem(DATA_KEY, JSON.stringify(dataForm));
 };
 
 function reloadPage() {
     if (dataForm) {
-        email.value = dataForm.value || '';
-        message.value = dataForm.value || '';
+        email.value = dataForm.email || '';
+        message.value = dataForm.message || '';
     };
 };
 
@@ -33,5 +34,3 @@ function onSubmitForm(e) {
     e.currentTarget.reset();
     dataForm = {};
 };
-
-
